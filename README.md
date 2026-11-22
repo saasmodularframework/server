@@ -126,3 +126,4 @@ Flutter 3.47+ / Dart 3.13+ is required by retro_desktop_ui.
 * The 6 MB `saas-subsections.gif` of the old project is not included; `it-office.mp4` is kept and stored in the database.
 
 
+
