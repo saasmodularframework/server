@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 
 import '../theme/app_theme.dart';
 import '../theme/app_widgets.dart';
+import 'core_spiral.dart';
 
 class AsyncBody<T> extends StatelessWidget {
   final Future<T> future;
@@ -24,7 +25,7 @@ class AsyncBody<T> extends StatelessWidget {
           if (!snap.hasData) {
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 60),
-              child: Center(child: txt('\u25C6  OPENING Archive  \u25C6', color: AppColors.light, spacing: 4)),
+              child: const Center(child: PageLoader()),
             );
           }
           return builder(context, snap.data as T);

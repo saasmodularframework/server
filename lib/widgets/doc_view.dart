@@ -165,7 +165,7 @@ class _Bullets extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(top: 6, right: 10),
-                      child: txt('\u25C6', size: 8, color: AppColors.bronze),
+                      child: txt('\u25CF', size: 6, color: AppColors.bronze),
                     ),
                     Expanded(child: RichSpans(item)),
                   ],
@@ -198,7 +198,7 @@ class _DocTable extends StatelessWidget {
             for (var i = 0; i < cols; i++)
               pad(i < block.head.length
                   ? txt(block.head[i].toUpperCase(),
-                      size: 11.5, weight: FontWeight.w700, spacing: 1.5, color: const Color(0xFFF2E8C9))
+                      size: 11.5, weight: FontWeight.w700, spacing: 1.5, color: AppColors.paper)
                   : const SizedBox.shrink()),
           ],
         ),
@@ -345,16 +345,14 @@ class _Cards extends StatelessWidget {
                   ],
                 );
               }
-              return IntrinsicHeight(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    for (var i = 0; i < block.cards.length; i++) ...[
-                      if (i > 0) const SizedBox(width: _gap),
-                      Expanded(flex: block.cards[i].flex, child: _card(block.cards[i], null)),
-                    ],
+              return Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  for (var i = 0; i < block.cards.length; i++) ...[
+                    if (i > 0) const SizedBox(width: _gap),
+                    Expanded(flex: block.cards[i].flex, child: _card(block.cards[i], null)),
                   ],
-                ),
+                ],
               );
             }
             final cols = w >= 960 ? 3 : (w >= 620 ? 2 : 1);
@@ -381,43 +379,29 @@ class _CardView extends StatelessWidget {
   Widget build(BuildContext context) {
     final label = card.linkLabel;
     final href = card.linkHref;
-    return AppFrame(
-      padding: const EdgeInsets.all(12),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              if (badge != null) ...[
-                Container(
-                  width: 36,
-                  height: 36,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: AppColors.burgundy,
-                    border: Border.all(color: AppColors.light, width: 2),
-                  ),
-                  child: txt(badge!, size: 11, weight: FontWeight.w700, color: const Color(0xFFF2E8C9)),
-                ),
-                const SizedBox(width: 10),
-              ],
-              Expanded(
-                child: txt(card.title.toUpperCase(),
-                    size: 14, weight: FontWeight.w700, spacing: 1.5, color: AppColors.light, height: 1.3),
+    return AppRoundedTile(
+      leading: badge == null
+          ? null
+          : Container(
+              width: 36,
+              height: 36,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: AppColors.burgundy,
+                border: Border.all(color: AppColors.light, width: 2),
+                borderRadius: BorderRadius.circular(18),
               ),
-            ],
-          ),
-          if (card.body.isNotEmpty) ...[
-            const SizedBox(height: 10),
-            RichSpans(card.body, size: 12.5),
-          ],
-          if (label != null && href != null) ...[
-            const SizedBox(height: 8),
-            RetroDesktopButton.text(label, onPressed: () => openLink(context, href)),
-          ],
+              child: txt(badge!, size: 11, weight: FontWeight.w700, color: AppColors.paper),
+            ),
+      title: txt(card.title.toUpperCase(),
+          size: 14, weight: FontWeight.w700, spacing: 1.5, color: AppColors.light, height: 1.3),
+      children: [
+        if (card.body.isNotEmpty) RichSpans(card.body, size: 12.5),
+        if (label != null && href != null) ...[
+          const SizedBox(height: 8),
+          RetroDesktopButton.text(label, onPressed: () => openLink(context, href)),
         ],
-      ),
+      ],
     );
   }
 }
@@ -457,10 +441,10 @@ class _AccordionState extends State<_Accordion> {
                           size: 15,
                           weight: FontWeight.w700,
                           spacing: 2,
-                          color: _open ? const Color(0xFFF2E8C9) : AppColors.light),
+                          color: _open ? AppColors.paper : AppColors.light),
                     ),
                     txt(_open ? '\u25B2' : '\u25BC',
-                        size: 12, color: _open ? const Color(0xFFF2E8C9) : AppColors.light),
+                        size: 12, color: _open ? AppColors.paper : AppColors.light),
                   ],
                 ),
               ),

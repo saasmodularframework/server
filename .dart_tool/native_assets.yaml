@@ -11,7 +11,7 @@
     "linux_x64": {
       "package:sqlite3/src/ffi/libsqlite3.g.dart": [
         "absolute",
-        "/home/student_00_301ce19272d6/test/server/.dart_tool/lib/libsqlite3.so"
+        "/home/student_00_aa8fe9fe2850/test/server/.dart_tool/lib/libsqlite3.so"
       ]
     }
   }

@@ -71,28 +71,26 @@ class _ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) => SizedBox(
         width: 250,
-        child: AppTap(
-          onTap: () => navigate(context, Routes.page(product.slug)),
-          child: AppFrame(
-            padding: const EdgeInsets.all(8),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 130,
-                  width: double.infinity,
-                  child: DbImage(product.heroId, cacheWidth: 500),
-                ),
-                const SizedBox(height: 8),
-                txt(product.display, size: 13, weight: FontWeight.w700, spacing: 1.5, color: AppColors.light, maxLines: 2),
-                const SizedBox(height: 2),
-                txt('${product.versionLabel}  ${product.copyright}', size: 11, spacing: 1),
-                const SizedBox(height: 4),
-                txt('PAGE ${product.position + 1} / 40', size: 10, spacing: 2),
-              ],
+        child: AppRoundedTile(
+          header: Padding(
+            padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
+            child: SizedBox(
+              height: 130,
+              width: double.infinity,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: DbImage(product.heroId, cacheWidth: 500),
+              ),
             ),
           ),
+          title: txt(product.display, size: 13, weight: FontWeight.w700, spacing: 1.5, color: AppColors.light, maxLines: 2),
+          subtitle: txt('PAGE ${product.position + 1} / 40', size: 10, spacing: 2),
+          children: [
+            txt('${product.versionLabel}  ${product.copyright}', size: 11, spacing: 1),
+            const SizedBox(height: 10),
+            RetroDesktopButton('Open page',
+                isDefaultAction: true, onPressed: () => navigate(context, Routes.page(product.slug))),
+          ],
         ),
       );
 }
-

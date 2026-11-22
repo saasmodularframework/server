@@ -1,4 +1,7 @@
+import 'package:flutter/material.dart' show Material, MaterialType;
 import 'package:flutter/widgets.dart';
+import 'package:line_icons/line_icons.dart';
+import 'package:rounded_expansion_tile/rounded_expansion_tile.dart';
 
 import '../app_state.dart';
 import 'app_theme.dart';
@@ -8,31 +11,36 @@ class AppFrame extends StatelessWidget {
   final EdgeInsetsGeometry padding;
   final Color? background, border;
 
+  final double radius;
+
   const AppFrame({
     super.key,
     required this.child,
     this.padding = const EdgeInsets.all(14),
     this.background,
     this.border,
+    this.radius = 0,
   });
 
   @override
   Widget build(BuildContext context) {
     final border = this.border ?? AppColors.light;
     final background = this.background ?? AppColors.navy;
-    return CustomPaint(
-        foregroundPainter: _CornerPainter(border),
+    final round = radius > 0;
+    final outer = round ? BorderRadius.circular(radius) : null;
+    final inner = round ? BorderRadius.circular((radius - 4).clamp(0, radius).toDouble()) : null;
+    final frame = DecoratedBox(
+      decoration: BoxDecoration(color: background, border: Border.all(color: border, width: 2), borderRadius: outer),
+      child: Padding(
+        padding: const EdgeInsets.all(4),
         child: DecoratedBox(
-          decoration: BoxDecoration(color: background, border: Border.all(color: border, width: 2)),
-          child: Padding(
-            padding: const EdgeInsets.all(4),
-            child: DecoratedBox(
-              decoration: BoxDecoration(border: Border.all(color: border.withValues(alpha: 0.55), width: 1)),
-              child: Padding(padding: padding, child: child),
-            ),
-          ),
+          decoration: BoxDecoration(border: Border.all(color: border.withValues(alpha: 0.55), width: 1), borderRadius: inner),
+          child: Padding(padding: padding, child: child),
         ),
-      );
+      ),
+    );
+    if (round) return frame;
+    return CustomPaint(foregroundPainter: _CornerPainter(border), child: frame);
   }
 }
 
@@ -77,26 +85,12 @@ class _DividerPainter extends CustomPainter {
     final line = Paint()
       ..color = color
       ..strokeWidth = 1.5;
-    final fill = Paint()..color = color;
-    canvas.drawLine(Offset(0, cy - 3), Offset(cx - 46, cy - 3), line);
-    canvas.drawLine(Offset(0, cy + 3), Offset(cx - 46, cy + 3), line);
-    canvas.drawLine(Offset(cx + 46, cy - 3), Offset(size.width, cy - 3), line);
-    canvas.drawLine(Offset(cx + 46, cy + 3), Offset(size.width, cy + 3), line);
-
-    for (var i = -3; i <= 3; i++) {
-      canvas.drawLine(Offset(cx, cy + 12), Offset(cx + i * 7.0, cy - 12 + i.abs() * 2.5), line);
+    const gap = 16.0;
+    for (final dy in [-3.0, 3.0]) {
+      canvas.drawLine(Offset(0, cy + dy), Offset(cx - gap, cy + dy), line);
+      canvas.drawLine(Offset(cx + gap, cy + dy), Offset(size.width, cy + dy), line);
     }
-
-    final d = Path()
-      ..moveTo(cx, cy - 9)
-      ..lineTo(cx + 9, cy)
-      ..lineTo(cx, cy + 9)
-      ..lineTo(cx - 9, cy)
-      ..close();
-    canvas.drawPath(d, fill);
-    for (final dx in [-30.0, 30.0]) {
-      canvas.drawRect(Rect.fromCenter(center: Offset(cx + dx, cy), width: 7, height: 7), fill);
-    }
+    canvas.drawCircle(Offset(cx, cy), 4.5, Paint()..color = color);
   }
 
   @override
@@ -192,3 +186,54 @@ class SquareSwitcher extends StatelessWidget {
       );
 }
 
+class AppRoundedTile extends StatelessWidget {
+  final Widget title;
+  final Widget? subtitle, leading, header;
+  final List<Widget> children;
+  final double radius;
+  final EdgeInsets childrenPadding;
+
+  const AppRoundedTile({
+    super.key,
+    required this.title,
+    this.subtitle,
+    this.leading,
+    this.header,
+    this.children = const [],
+    this.radius = 16,
+    this.childrenPadding = const EdgeInsets.fromLTRB(12, 0, 12, 12),
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final shape = RoundedRectangleBorder(borderRadius: BorderRadius.circular((radius - 4).clamp(0, radius).toDouble()));
+    return AppFrame(
+      radius: radius,
+      padding: const EdgeInsets.all(0),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular((radius - 4).clamp(0, radius).toDouble()),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (header != null) header!,
+            Material(
+              type: MaterialType.transparency,
+              child: RoundedExpansionTile(
+                shape: shape,
+                title: title,
+                subtitle: subtitle,
+                leading: leading,
+                contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                childrenPadding: childrenPadding,
+                duration: const Duration(milliseconds: 300),
+                trailing: Icon(LineIcons.angleDown, size: 18, color: AppColors.light),
+                children: children,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

@@ -24,6 +24,10 @@ dependencies:
   video_player: ^2.9.0
   web: ^1.0.0
   url_launcher: ^6.3.2
+  flutter_dot_loader: ^1.1.0
+  navigation_panel: ^1.0.1
+  rounded_expansion_tile: ^0.0.13
+  line_icons: ^2.0.3
 
 dev_dependencies:
   flutter_test:

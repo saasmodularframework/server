@@ -6,14 +6,21 @@ import '../app_state.dart';
 class AppColors {
   static bool get _dark => AppState.dark.value;
 
-  static Color get ink => _dark ? const Color(0xFF0B0B0F) : const Color(0xFFF6F0DC);
-  static Color get navy => _dark ? const Color(0xFF0A1A2F) : const Color(0xFFFFFFFF);
-  static Color get light => _dark ? const Color(0xFFD4AF37) : const Color(0xFF7A5F12);
-  static Color get cream => _dark ? const Color(0xFFF2E8C9) : const Color(0xFF1B1A22);
+
+  static Color get ink => _dark ? const Color(0xFF0C0E12) : const Color(0xFFEEF0F3);
+  static Color get navy => _dark ? const Color(0xFF14181F) : const Color(0xFFFFFFFF);
+  static Color get light => _dark ? const Color(0xFFC4C8D0) : const Color(0xFF555B66);
+  static Color get cream => _dark ? const Color(0xFFEDEFF3) : const Color(0xFF1B1C22);
+
+
+  static const paper = Color(0xFFEDEFF3);
 
   static const emerald = Color(0xFF0B6E4F);
-  static const burgundy = Color(0xFF6B1E2E);
-  static const bronze = Color(0xFFB87333);
+
+
+  static const burgundy = Color(0xFF3B4352);
+
+  static Color get bronze => _dark ? const Color(0xFFA9BCD6) : const Color(0xFF365B8A);
 }
 
 class ThemePreset {
@@ -23,7 +30,7 @@ class ThemePreset {
 }
 
 const themePresets = [
-  ThemePreset('palette-01', Color(0xFF8A6D1F)),
+  ThemePreset('palette-01', Color(0xFF8E939E)),
   ThemePreset('palette-02', Color(0xFF0B6E4F)),
   ThemePreset('palette-03', Color(0xFF8B2E43)),
   ThemePreset('palette-04', Color(0xFF1F4E8C)),

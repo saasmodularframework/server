@@ -87,7 +87,7 @@ class _ProductRow extends StatelessWidget {
                   color: AppColors.burgundy,
                   border: Border.all(color: AppColors.light, width: 2),
                 ),
-                child: const Center(child: Icon(RetroDesktopGlyphs.fileText, color: Color(0xFFF2E8C9), size: 22)),
+                child: const Center(child: Icon(RetroDesktopGlyphs.fileText, color: AppColors.paper, size: 22)),
               ),
               Expanded(
                 child: AppFrame(
