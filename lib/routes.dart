@@ -12,6 +12,28 @@ class Routes {
   static const library = '/library';
   static const services = '/services';
   static const caseStudies = '/case-studies';
+  static const browserFiles = '/browser-files';
+  static const codingFragments = '/coding-fragments';
+  static const codingVariations = '/coding-variations';
+  static const componentsInventory = '/components-inventory';
+  static const componentsSpecification = '/components-specification';
+  static const gdprCompliance = '/gdpr-compliance';
+  static const microservicesPeculiarities = '/microservices-peculiarities';
+  static const termsOfUse = '/terms-of-use';
+  static const thirdPartyAds = '/third-party-ads';
+
+  static const List<(String, String)> documents = [
+    ('Browser Files', browserFiles),
+    ('Coding Fragments', codingFragments),
+    ('Coding Variations', codingVariations),
+    ('Components Inventory', componentsInventory),
+    ('Components Specification', componentsSpecification),
+    ('GDPR Compliance', gdprCompliance),
+    ('Microservices Peculiarities', microservicesPeculiarities),
+    ('Terms of Use', termsOfUse),
+    ('Third-Party Ads', thirdPartyAds),
+  ];
+
   static String page(String slug) => '/p/$slug';
   static String instance(Section s, int number) => '${s.path}/${instanceSlug(number)}';
 }
@@ -33,6 +55,7 @@ String sitemapXml() {
     '$baseUrl${Routes.library}',
     '$baseUrl${Routes.services}',
     '$baseUrl${Routes.caseStudies}',
+    for (final d in Routes.documents) '$baseUrl${d.$2}',
     for (final s in seedProducts) '$baseUrl${Routes.page(s.slug)}',
     for (final section in Section.values)
       for (var n = 1; n <= kInstanceCount; n++) '$baseUrl${Routes.instance(section, n)}',

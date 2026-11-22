@@ -1,0 +1,1 @@
+{"isEntrypoint":false,"deps":["path|lib/path.dart","frontend_server_client|lib/src/shared.dart"],"parts":[],"conditionalDeps":[],"sdkDeps":["convert","io","typed_data"],"hasMain":false}

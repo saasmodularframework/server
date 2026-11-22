@@ -1,0 +1,1 @@
+{"isEntrypoint":false,"deps":["synchronized|lib/src/global_lock.dart","synchronized|lib/src/global_lock_memory.dart"],"parts":[],"conditionalDeps":[],"sdkDeps":["async","js_interop"],"hasMain":false}
