@@ -104,7 +104,7 @@ saas-products/
 
 * **text**: `pages` (title, version, summary, long `body`), `page_tags`. Editable on each page, *Database* tab.
 * **jpg / gif / mp4**: `media(kind, name, mime, bytes BLOB)`, placed on pages through `page_media(slug, media_id, position)`.
-  14 JPG, 14 GIF and 2 MP4 are stored once and shared by all forty pages; page *i* starts its GIF stack with GIF *i*.
+  14 JPG, 14 GIF and 2 MP4 are stored once and shared by all software engineering and computer science; page *i* starts its GIF stack with GIF *i*.
 * The first start creates the schema and fills it from `assets/` (`Db._seedIfEmpty`). Afterwards the UI reads only from the database.
   `Db.addMedia(kind, name, bytes, slug: ...)` stores further files.
 * MP4 playback: bytes are written to a temp file (mobile/desktop) or wrapped in a Blob URL (web), see `lib/services/video_source_*.dart`.

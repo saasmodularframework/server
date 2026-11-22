@@ -4,7 +4,7 @@
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0B0B0F",
-    "theme_color": "#D4AF37",
+    "theme_color": "#C0C4CC",
     "description": "Art SaaS products with SQLite-stored media.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,

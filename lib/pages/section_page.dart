@@ -20,7 +20,7 @@ class SectionPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            AppHeading(section.label, subtitle: 'Forty pages: ${instanceSlug(1)} to ${instanceSlug(kInstanceCount)}', size: 28),
+            AppHeading(section.label, subtitle: 'software engineering and computer science: ${instanceSlug(1)} to ${instanceSlug(kInstanceCount)}', size: 28),
             const GifStackCarousel(),
             const SizedBox(height: 12),
             AppFrame(

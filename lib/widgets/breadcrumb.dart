@@ -24,7 +24,7 @@ class AppBreadcrumb extends StatelessWidget {
       if (i > 0) {
         items.add(Padding(
           padding: const EdgeInsets.symmetric(horizontal: 6),
-          child: txt('\u25C6', size: 8, color: AppColors.light),
+          child: txt('\u25CF', size: 6, color: AppColors.light),
         ));
       }
       items.add(last || c.route == null
