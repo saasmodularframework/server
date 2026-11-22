@@ -1,0 +1,41 @@
+name: saas_products
+description: "About SaaS Products" site built with retro_desktop_ui, SQLite media storage, a JPG carousel on the main page and stacked GIF carousels on all other pages.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.13.0 <4.0.0'
+  flutter: '>=3.47.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
+  retro_desktop_ui: ^0.4.1
+  flutter_carousel_widget: ^3.0.1
+  stacked_card_carousel: ^0.0.4
+  intl: ^0.20.3
+  sqflite: ^2.4.6
+  sqflite_common_ffi: ^2.3.0
+  sqflite_common_ffi_web: ^1.0.0
+  path: ^1.9.0
+  path_provider: ^2.1.0
+  video_player: ^2.9.0
+  web: ^1.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+dependency_overrides:
+  intl: ^0.20.3
+
+flutter:
+  uses-material-design: false
+  assets:
+    - assets/gifs/
+    - assets/images/
+    - assets/videos/
+
