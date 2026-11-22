@@ -26,6 +26,51 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://saas-app-server.onrender.com/browser-files</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://saas-app-server.onrender.com/coding-fragments</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://saas-app-server.onrender.com/coding-variations</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://saas-app-server.onrender.com/components-inventory</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://saas-app-server.onrender.com/components-specification</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://saas-app-server.onrender.com/gdpr-compliance</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://saas-app-server.onrender.com/microservices-peculiarities</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://saas-app-server.onrender.com/terms-of-use</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://saas-app-server.onrender.com/third-party-ads</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://saas-app-server.onrender.com/p/sticky-timetable</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>

@@ -1,0 +1,1 @@
+{"isEntrypoint":false,"deps":["analyzer|lib/dart/ast/token.dart","analyzer|lib/src/generated/testing/token_factory.dart"],"parts":[],"conditionalDeps":[],"sdkDeps":[],"hasMain":false}

@@ -1,0 +1,1 @@
+{"isEntrypoint":false,"deps":["synchronized|lib/src/global_lock.dart"],"parts":[],"conditionalDeps":[],"sdkDeps":["async","convert","io","isolate","math"],"hasMain":false}

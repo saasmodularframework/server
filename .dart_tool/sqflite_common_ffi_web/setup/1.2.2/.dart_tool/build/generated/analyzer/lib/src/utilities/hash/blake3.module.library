@@ -1,0 +1,1 @@
+{"isEntrypoint":false,"deps":[],"parts":["analyzer|lib/src/utilities/hash/blake3_internal.dart","analyzer|lib/src/utilities/hash/blake3_scalar_compression.dart","analyzer|lib/src/utilities/hash/blake3_streaming.dart"],"conditionalDeps":[],"sdkDeps":["typed_data"],"hasMain":false}

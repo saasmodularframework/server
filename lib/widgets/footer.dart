@@ -28,6 +28,16 @@ class AppFooter extends StatelessWidget {
               RetroDesktopButton.text('Archive', onPressed: () => navigate(context, Routes.library)),
             ],
           ),
+          const SizedBox(height: 4),
+          Wrap(
+            alignment: WrapAlignment.center,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            spacing: 4,
+            children: [
+              for (final d in Routes.documents)
+                RetroDesktopButton.text(d.$1, onPressed: () => navigate(context, d.$2)),
+            ],
+          ),
           const SizedBox(height: 8),
           txt('\u00A9 $year  SaaS PRODUCTS', size: 11, spacing: 3, color: AppColors.light, align: TextAlign.center),
           const SizedBox(height: 4),

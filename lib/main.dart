@@ -8,6 +8,7 @@ import 'package:sqflite_common_ffi_web/sqflite_ffi_web.dart';
 
 import 'app_state.dart';
 import 'pages/about_saas_products.dart';
+import 'pages/doc_pages.dart';
 import 'data/instances.dart';
 import 'pages/home_page.dart';
 import 'pages/instance_page.dart';
@@ -73,6 +74,9 @@ Route<void> _onGenerateRoute(RouteSettings settings) {
     final section = path == Routes.services ? Section.services : Section.caseStudies;
     title = section.label;
     page = SectionPage(section: section);
+  } else if (docPage(path) case (final String docTitle, final Widget docWidget)) {
+    title = docTitle;
+    page = docWidget;
   } else if (_instance(path) case (final Section section, final int number)) {
     title = '${section.label} \u00B7 ${instanceSlug(number)}';
     page = InstancePage(key: ValueKey(path), section: section, number: number);
